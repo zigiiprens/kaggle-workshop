@@ -31,7 +31,7 @@ def main():
 
     preprocessing.analizeDataByVisual()
     preprocessing.correctionData()
-    preprocessing.creatingData()
+    preprocessing.createData()
 
 
 if __name__ == "__main__":
