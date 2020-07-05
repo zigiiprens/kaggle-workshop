@@ -1,3 +1,6 @@
+import os
+from util import bcolors as bc
+
 # machine learning
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC, LinearSVC
@@ -11,4 +14,7 @@ from sklearn.tree import DecisionTreeClassifier
 class ClassifyTitanic():
     """
     """
+    def __init__(self):
+        print(bc.HEADER + "ClassifyTitanic starting ..." + bc.ENDC)
+        pass
     pass

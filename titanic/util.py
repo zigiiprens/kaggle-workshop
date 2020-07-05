@@ -2,8 +2,8 @@ class bcolors:
     HEADER = '\033[95m'
     
     INFO = '    [INFO]  '
-    OKBLUE = '\033[94m[DOWNLOAD]    '
-    WARNING = '\033[93m    [WARN]   '
+    OKBLUE = '\033[94m[CORRECTION]    '
+    WARNING = '\033[93m    [WARNING]   '
     FAIL = '\033[91m   [ERROR]  '
 
     OKGREEN = '\033[92m'
