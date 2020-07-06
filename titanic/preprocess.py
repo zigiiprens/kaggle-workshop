@@ -62,7 +62,7 @@ class PreprocessTitanic():
         print(bc.OKGREEN + bc.INFO + "exploreData Test" + bc.ENDC)
         print(self.test_df.info())
 
-    def descibeData(self):
+    def describeData(self):
         """
         What is the distribution of categorical features?:
             Names are unique across the dataset (count=unique=891)
