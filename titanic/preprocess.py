@@ -71,9 +71,9 @@ class PreprocessTitanic():
             Embarked takes three possible values. S port used by most passengers (top=S)
             Ticket feature has high ratio (22%) of duplicate values (unique=681).
         """
-        print(bc.OKGREEN + bc.INFO + "descibeData" +bc.ENDC)
+        print(bc.OKGREEN + bc.INFO + "describeData" +bc.ENDC)
         print(self.train_df.describe())
-        print(bc.OKGREEN + bc.INFO + "descibeData" +bc.ENDC)
+        print(bc.OKGREEN + bc.INFO + "describeData" +bc.ENDC)
         print(self.train_df.describe(include=['O']))
 
 

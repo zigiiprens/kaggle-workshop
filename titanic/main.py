@@ -26,7 +26,7 @@ def main():
 
     #Preprocess mode
     preprocessing.exploreData()
-    preprocessing.descibeData()
+    preprocessing.describeData()
     preprocessing.analizeData()
 
     preprocessing.analizeDataByVisual()
