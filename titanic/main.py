@@ -1,5 +1,5 @@
-import preprocess
-import classifier
+from preprocess.preprocess import PreprocessTitanic
+from classifier.classifier import ClassifyTitanic
 
 """
 Workflow goals
@@ -22,8 +22,8 @@ The data science solutions workflow solves for seven major goals.
 
 
 def main():
-    preprocessing = preprocess.PreprocessTitanic()
-    classifying = classifier.ClassifyTitanic()
+    preprocessing = PreprocessTitanic()
+    classifying = ClassifyTitanic()
 
     # Preprocess mode
     preprocessing.exploreData()

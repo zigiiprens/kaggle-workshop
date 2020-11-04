@@ -1,5 +1,4 @@
 import os
-from util import BColors
 
 # data analysis and wrangling
 import pandas as pd
@@ -8,26 +7,31 @@ import pandas as pd
 
 # visualization
 import seaborn as sns
+import matplotlib
+
+matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 
-from titanic.util import BColors
+# utils
+from utils.util import BColors as Bc
 
 
 class PreprocessTitanic:
     """
+    Preprocessing class
     """
 
     def __init__(self):
-        print(BColors.HEADER + "PreprocessTitanic starting ..." + BColors.ENDC)
+        print(Bc.HEADER + "PreprocessTitanic starting ..." + Bc.ENDC)
         self.datasetPath = os.path.join(os.getcwd(), "data")
         self.dirs = os.listdir(self.datasetPath)
         self.groundTruthFilepath = os.path.join(self.datasetPath, self.dirs[2])
         self.trainFilepath = os.path.join(self.datasetPath, self.dirs[1])
         self.testFilepath = os.path.join(self.datasetPath, self.dirs[0])
-        print(BColors.OKGREEN +
-              BColors.INFO +
+        print(Bc.OKGREEN +
+              Bc.INFO +
               "Directories {} Files {}".format(self.datasetPath, self.dirs) +
-              BColors.ENDC)
+              Bc.ENDC)
 
         self.train_df = None
         self.val_df = None
@@ -42,31 +46,31 @@ class PreprocessTitanic:
 
     def loadTrainData(self):
         self.train_df = pd.read_csv(self.trainFilepath)
-        print(BColors.OKGREEN + BColors.INFO + "loadTrainData" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "loadTrainData" + Bc.ENDC)
         print(self.train_df.head())
 
     def loadTestData(self):
         self.test_df = pd.read_csv(self.testFilepath)
-        print(BColors.OKGREEN + BColors.INFO + "loadTestData" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "loadTestData" + Bc.ENDC)
         print(self.test_df.head())
 
     def loadGroundTruthData(self):
         self.val_df = pd.read_csv(self.groundTruthFilepath)
-        print(BColors.OKGREEN + BColors.INFO + "loadGroundTruthData" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "loadGroundTruthData" + Bc.ENDC)
         print(self.val_df.head())
 
     def featuresData(self):
-        print(BColors.OKGREEN + BColors.INFO + "featuresData Train" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "featuresData Train" + Bc.ENDC)
         print(self.train_df.columns.values)
-        print(BColors.OKGREEN + BColors.INFO + "featuresData Test" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "featuresData Test" + Bc.ENDC)
         print(self.test_df.columns.values)
-        print(BColors.OKGREEN + BColors.INFO + "featuresData Val" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "featuresData Val" + Bc.ENDC)
         print(self.val_df.columns.values)
 
     def exploreData(self):
-        print(BColors.OKGREEN + BColors.INFO + "exploreData Train" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "exploreData Train" + Bc.ENDC)
         print(self.train_df.info())
-        print(BColors.OKGREEN + BColors.INFO + "exploreData Test" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "exploreData Test" + Bc.ENDC)
         print(self.test_df.info())
 
     def describeData(self):
@@ -78,9 +82,9 @@ class PreprocessTitanic:
             Embarked takes three possible values. S port used by most passengers (top=S)
             Ticket feature has high ratio (22%) of duplicate values (unique=681).
         """
-        print(BColors.OKGREEN + BColors.INFO + "describeData" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "describeData" + Bc.ENDC)
         print(self.train_df.describe())
-        print(BColors.OKGREEN + BColors.INFO + "describeData" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "describeData" + Bc.ENDC)
         print(self.train_df.describe(include=['O']))
 
     """
@@ -122,25 +126,25 @@ class PreprocessTitanic:
     """
 
     def analiseData(self):
-        print(BColors.OKGREEN + BColors.INFO + "analiseData Pclass" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "analiseData Pclass" + Bc.ENDC)
         print(self.train_df[['Pclass', 'Survived']].groupby(['Pclass'],
                                                             as_index=False).mean().sort_values(by='Survived',
                                                                                                ascending=False))
-        print(BColors.OKGREEN + BColors.INFO + "analiseData Sex" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "analiseData Sex" + Bc.ENDC)
         print(self.train_df[["Sex", "Survived"]].groupby(['Sex'],
                                                          as_index=False).mean().sort_values(by='Survived',
                                                                                             ascending=False))
-        print(BColors.OKGREEN + BColors.INFO + "analiseData SibSp" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "analiseData SibSp" + Bc.ENDC)
         print(self.train_df[["SibSp", "Survived"]].groupby(['SibSp'],
                                                            as_index=False).mean().sort_values(by='Survived',
                                                                                               ascending=False))
-        print(BColors.OKGREEN + BColors.INFO + "analiseData Parch" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "analiseData Parch" + Bc.ENDC)
         print(self.train_df[["Parch", "Survived"]].groupby(['Parch'],
                                                            as_index=False).mean().sort_values(by='Survived',
                                                                                               ascending=False))
 
     def analiseDataByVisual(self):
-        print(BColors.OKGREEN + BColors.INFO + "analiseDataByVisual Age/Survived" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "analiseDataByVisual Age/Survived" + Bc.ENDC)
         """
         Analyze by visualizing data
             Now we can continue confirming some of our assumptions using visualizations for analyzing the data.
@@ -223,7 +227,7 @@ class PreprocessTitanic:
         grid.map(sns.barplot, 'Sex', 'Fare', alpha=.5, ci=None).fig.show()
         grid.add_legend()
 
-        input(BColors.WARNING + "Press any key to close..." + BColors.ENDC)
+        input(Bc.WARNING + "Press any key to close..." + Bc.ENDC)
 
     def correctionData(self):
         """
@@ -234,25 +238,25 @@ class PreprocessTitanic:
             features. Note that where applicable we perform operations on both training and testing datasets together 
             to stay consistent.
         """
-        print(BColors.OKGREEN + BColors.INFO + "correctionData Ticket/Cabin dropping" + BColors.ENDC)
-        print(BColors.OKBLUE +
+        print(Bc.OKGREEN + Bc.INFO + "correctionData Ticket/Cabin dropping" + Bc.ENDC)
+        print(Bc.OKBLUE +
               "Before" +
               str(self.train_df.shape) +
               str(self.test_df.shape) +
               str(self.combine[0].shape) +
-              str(self.combine[1].shape) + BColors.ENDC)
+              str(self.combine[1].shape) + Bc.ENDC)
 
         self.train_df = self.train_df.drop(['Ticket', 'Cabin'], axis=1)
         self.test_df = self.test_df.drop(['Ticket', 'Cabin'], axis=1)
         self.combine = [self.train_df, self.test_df]
 
-        print(BColors.OKBLUE +
+        print(Bc.OKBLUE +
               "After" +
               str(self.train_df.shape) +
               str(self.test_df.shape) +
               str(self.combine[0].shape) +
               str(self.combine[1].shape) +
-              BColors.ENDC)
+              Bc.ENDC)
 
     def createData(self):
         """
@@ -273,7 +277,7 @@ class PreprocessTitanic:
         Decision.
             We decide to retain the new Title feature for model training.
         """
-        print(BColors.OKGREEN + BColors.INFO + "createData All" + BColors.ENDC)
+        print(Bc.OKGREEN + Bc.INFO + "createData All" + Bc.ENDC)
         # TODO: include the data creation here
 
         pass

@@ -1,5 +1,7 @@
 import os
-from util import BColors
+
+# utils
+from utils.util import BColors as Bc
 
 # machine learning
 # from sklearn.linear_model import LogisticRegression
@@ -17,7 +19,7 @@ class ClassifyTitanic:
     """
 
     def __init__(self):
-        print(BColors.HEADER + "ClassifyTitanic starting ..." + BColors.ENDC)
+        print(Bc.HEADER + "ClassifyTitanic starting ..." + Bc.ENDC)
         pass
 
     pass
