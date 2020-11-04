@@ -20,11 +20,12 @@ The data science solutions workflow solves for seven major goals.
     Charting. How to select the right visualization plots and charts depending on nature of the data and the solution goals.
 """
 
-def main():
-    preprocessing   = preprocess.PreprocessTitanic()
-    classifing      = classifier.ClassifyTitanic()
 
-    #Preprocess mode
+def main():
+    preprocessing = preprocess.PreprocessTitanic()
+    classifying = classifier.ClassifyTitanic()
+
+    # Preprocess mode
     preprocessing.exploreData()
     preprocessing.describeData()
     preprocessing.analiseData()
