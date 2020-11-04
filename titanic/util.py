@@ -1,4 +1,4 @@
-class bcolors:
+class BColors:
     HEADER = '\033[95m'
     
     INFO = '    [INFO]  '
