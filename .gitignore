@@ -1,5 +1,9 @@
 .vscode
 .idea
 .idea/*
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
 python-tutorials
 titanic/data
