@@ -9,7 +9,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib
 
-matplotlib.use('Qt5Agg')
+# matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
 
 # utils
@@ -38,6 +38,7 @@ class PreprocessTitanic:
         self.test_df = None
 
         # Load Data train/test
+        # TODO: Download data from kaggle and place them in 'titanic/data' folder.
         self.loadTrainData()
         self.loadTestData()
         self.loadGroundTruthData()
